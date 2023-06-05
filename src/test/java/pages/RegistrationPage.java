@@ -29,10 +29,10 @@ public class RegistrationPage {
     public RegistrationPage openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-        deliteBanner();
+        removeBanner();
         return this;
     }
-    public RegistrationPage deliteBanner(){
+    public RegistrationPage removeBanner(){
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return  this;
