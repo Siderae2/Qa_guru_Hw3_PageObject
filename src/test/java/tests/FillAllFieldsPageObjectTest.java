@@ -2,8 +2,10 @@ package tests;
 
 
 import org.junit.jupiter.api.Test;
+import pages.RegistrationPage;
 
 public class FillAllFieldsPageObjectTest extends BaseTest {
+    RegistrationPage registrationPage = new RegistrationPage();
     @Test
     void successfulRegistrationTest(){
 
@@ -23,7 +25,7 @@ public class FillAllFieldsPageObjectTest extends BaseTest {
                 .selectCity("Karnal")
                 .clickButtonSumbit();
     // Проверка значений
-        registrationPage.verifyTitle()
+        registrationPage.verifyTitle("Thanks for submitting the form")
                 .verifyResult("Student Name", "Вискарик Вкусный")
                 .verifyResult("Student Email", "fdsfdf@fsdfdsf.ru")
                 .verifyResult("Gender", "Male")
@@ -34,7 +36,5 @@ public class FillAllFieldsPageObjectTest extends BaseTest {
                 .verifyResult("Picture", "opsznH5vIhU.png")
                 .verifyResult("Address", "Брянск")
                 .verifyResult("State and City", "Haryana Karnal");
-
-
     }
 }

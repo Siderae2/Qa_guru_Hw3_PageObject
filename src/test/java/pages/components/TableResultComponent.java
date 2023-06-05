@@ -15,7 +15,7 @@ public class TableResultComponent {
     public void tableVerify(String key, String value) {
         table.$(byText(key)).parent().shouldHave(text(value));
     }
-    public void titleVerify(){
-        tile.shouldHave(text("Thanks for submitting the form"));
+    public void titleVerify(String text){
+        tile.shouldHave(text(text));
     }
 }

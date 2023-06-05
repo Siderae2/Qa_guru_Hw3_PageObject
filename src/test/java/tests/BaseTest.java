@@ -5,8 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import pages.RegistrationPage;
 
 public class BaseTest {
-    RegistrationPage registrationPage = new RegistrationPage();
-
     @BeforeAll
     static void beforeAll() {
         Configuration.pageLoadStrategy = "eager";

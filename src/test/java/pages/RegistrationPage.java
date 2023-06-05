@@ -29,9 +29,13 @@ public class RegistrationPage {
     public RegistrationPage openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        deliteBanner();
+        return this;
+    }
+    public RegistrationPage deliteBanner(){
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
-        return this;
+        return  this;
     }
     public RegistrationPage setFirstName(String text){
         firstName.setValue(text);
@@ -88,8 +92,8 @@ public class RegistrationPage {
         buttonSubmit.click();
         return this;
     }
-    public RegistrationPage verifyTitle() {
-        tableResultComponent.titleVerify();
+    public RegistrationPage verifyTitle(String text) {
+        tableResultComponent.titleVerify(text);
         return this;
     }
 
