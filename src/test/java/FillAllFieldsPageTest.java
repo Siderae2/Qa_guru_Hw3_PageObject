@@ -1,0 +1,44 @@
+import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Keys;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+
+    public class FillAllFieldsPageTest {
+        String url_qa_practice = "/automation-practice-form";
+        String fileName = "opsznH5vIhU.png";
+        @BeforeAll
+        static void beforeAll() {
+            Configuration.pageLoadStrategy = "eager";
+            Configuration.baseUrl = ("https://demoqa.com");
+            Configuration.browserSize = "1920x1080";
+        }
+        @Test
+        void setAllFieldsPageTest() {
+            open(url_qa_practice);
+            executeJavaScript("$('#fixedban').remove()");
+            executeJavaScript("$('footer').remove()");
+
+
+            $("#state").click();
+            $("#stateCity-wrapper").$(byText("Haryana")).click();
+            $("#city").click();
+            $("#stateCity-wrapper").$(byText("Karnal")).click();
+            $("#submit").click();
+            $(".modal-header").shouldHave(text("Thanks for submitting the form"));
+            $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Вискарик Вкусный"));
+            $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("fdsfdsf@fsdfsdf.com"));
+            $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Male"));
+            $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("7761558550"));
+            $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("04 April,1995"));
+            $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text("Hindi"));
+            $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text("Reading, Music"));
+            $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("opsznH5vIhU.png"));
+            $(".table-responsive").$(byText("Address")).parent().shouldHave(text("Брянск"));
+            $(".table-responsive").$(byText("State and City")).parent().shouldHave(text("Haryana Karnal"));
+        }
+    }
+
